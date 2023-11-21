@@ -1,0 +1,38 @@
+Create Table Admin(
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(25) UNIQUE,
+    Password VARCHAR(25) UNIQUE
+
+)
+
+CREATE TABLE Users (
+    User_ID INT IDENTITY(1,1) PRIMARY KEY,
+    Name VARCHAR(255),
+    Username VARCHAR(50) UNIQUE,
+    Password VARCHAR(255), -- Store hashed and salted passwords
+    CategoryName VARCHAR(100),
+    PhoneNumber VARCHAR(15)
+);
+CREATE TABLE FinancialTransactions (
+    Transaction_ID INT IDENTITY(1,1) PRIMARY KEY,
+    User_ID INT,
+    Username VARCHAR(50),
+    TransactionType VARCHAR(50),
+    TransactionDate DATE,
+    Amount DECIMAL(10, 2),
+    Description VARCHAR(255),
+    Status VARCHAR(50)
+);
+CREATE TABLE TransactionCategories (
+    Category_ID INT PRIMARY KEY,
+    CategoryName VARCHAR(100)
+);
+CREATE TABLE Budgets (
+    Budget_ID INT IDENTITY(1,1) PRIMARY KEY,
+    User_ID INT,
+    Category_ID INT,
+    BudgetName VARCHAR(100),
+    AllocatedAmount DECIMAL(10, 2),
+    StartDate DATE,
+    EndDate DATE
+);
