@@ -1,0 +1,59 @@
+Admin table
+
+CREATE TABLE [dbo].[Admin] (
+    [ID]       INT          IDENTITY (1, 1) NOT NULL,
+    [Username] VARCHAR (25) NULL,
+    [Password] VARCHAR (25) NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    UNIQUE NONCLUSTERED ([Password] ASC),
+    UNIQUE NONCLUSTERED ([Username] ASC)
+);
+
+//Budgets
+
+CREATE TABLE [dbo].[Budgets] (
+    [Budget_ID]       INT             IDENTITY (1, 1) NOT NULL,
+    [User_ID]         INT             NULL,
+    [BudgetName]      VARCHAR (100)   NULL,
+    [AllocatedAmount] DECIMAL (10, 2) NULL,
+    [StartDate]       DATE            NULL,
+    [EndDate]         DATE            NULL,
+    [Category_NAME]   VARCHAR (50)    NULL,
+    [Description]     VARCHAR (100)   NULL,
+    PRIMARY KEY CLUSTERED ([Budget_ID] ASC)
+);
+
+//Financial Transaction
+
+CREATE TABLE [dbo].[FinancialTransactions] (
+    [Transaction_ID]  INT             IDENTITY (1, 1) NOT NULL,
+    [User_ID]         INT             NULL,
+    [Username]        VARCHAR (50)    NULL,
+    [TransactionType] VARCHAR (50)    NULL,
+    [TransactionDate] DATE            NULL,
+    [Amount]          DECIMAL (10, 2) NULL,
+    [Description]     VARCHAR (255)   NULL,
+    PRIMARY KEY CLUSTERED ([Transaction_ID] ASC)
+);
+
+//TransactionCategories
+
+CREATE TABLE [dbo].[TransactionCategories] (
+    [Category_ID]  INT           IDENTITY (1, 1) NOT NULL,
+    [CategoryName] VARCHAR (100) NULL,
+    [amount]       INT           NULL,
+    PRIMARY KEY CLUSTERED ([Category_ID] ASC)
+);
+
+// Users
+
+CREATE TABLE [dbo].[Users] (
+    [User_ID]      INT           IDENTITY (1, 1) NOT NULL,
+    [Name]         VARCHAR (255) NULL,
+    [Username]     VARCHAR (50)  NULL,
+    [Password]     VARCHAR (255) NULL,
+    [CategoryName] VARCHAR (100) NULL,
+    [PhoneNumber]  VARCHAR (15)  NULL,
+    PRIMARY KEY CLUSTERED ([User_ID] ASC),
+    UNIQUE NONCLUSTERED ([Username] ASC)
+);
